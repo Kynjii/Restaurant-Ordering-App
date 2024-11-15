@@ -123,6 +123,7 @@ function renderOrderList() {
     let totalPriceHtml = `
                 <div>
                     <span class=”text-totalprice”>Total price:</span><span class="number-totalprice">$${calculateTotalPrice(orderList)}</span>
+                    <div id="discount"><p>Meal Deal discount applied!</p></div>
                 </div>
                 `
 
@@ -130,12 +131,27 @@ function renderOrderList() {
     
 }
 
-function calculateTotalPrice(orderList){
-    const totalPrice = orderList.reduce(function(total, currentValue){
+function calculateTotalPrice(orderList) {
+    // Calculate the total price of the items in the order
+    let totalPrice = orderList.reduce(function (total, currentValue) {
         return total + currentValue.price
     }, 0)
+
+    // Check if all three items are present in the orderList
+    const itemNames = orderList.map(item => item.name) // Extract item names
+    const mealDeal = itemNames.includes('Pizza') && itemNames.includes('Hamburger') && itemNames.includes('Beer')
+
+    // Apply discount if the meal deal condition is met
+    if (mealDeal) {
+        const discount = 10
+        totalPrice -= discount
+        const discountEl = document.getElementById('discount')
+        discountEl.style.display = "block"
+    }
+
     return totalPrice
 }
+
 
 
 
