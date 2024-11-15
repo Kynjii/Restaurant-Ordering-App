@@ -1,14 +1,22 @@
 import menuArray from './data.js'
 const orderListContainer = document.getElementById('order-list-container')
 const successEl = document.getElementById('success')
+const ratingEl = document.getElementById('rating')
 const form = document.getElementById('payment-form')
 const orderList = []
+
+ratingEl.addEventListener('click', function(){
+    ratingEl.style.display = "none"
+    successEl.innerHTML = `
+    <p>Rating submitted!</p>`
+})
 
 document.addEventListener('click', function(e){
     // if the user clicks on add, the item is added to the Order List
     if(e.target.dataset.add){
         handleAddClick(e.target.dataset.add)
         orderListContainer.style.display = "block"
+        ratingEl.style.display = "none"
 
         // if the success message is present, hides it   
         if (successEl){
@@ -30,7 +38,7 @@ document.addEventListener('click', function(e){
         } 
 
     }
-}
+    }
 })
 
 function handleAddClick(itemId){
@@ -81,6 +89,7 @@ form.addEventListener('submit', function(e){
     modal.style.display = "none"
     orderListContainer.style.display = "none"
     successEl.style.display = "block"
+    ratingEl.style.display = "block"
 })
 
 
