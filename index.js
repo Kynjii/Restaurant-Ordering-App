@@ -1,16 +1,34 @@
 import menuArray from './data.js'
+const orderListContainer = document.getElementById('order-list-container')
+const form = document.getElementById('payment-form')
+const success = document.querySelector(".success")
 const orderList = []
 
 document.addEventListener('click', function(e){
+    // if the user clicks on add, the item is added to the Order List
     if(e.target.dataset.add){
         handleAddClick(e.target.dataset.add)
+        orderListContainer.style.display = "block"
+
+        // if the success message is present, hides it
+        if (success){
+            console.log("hide message")
+            success.style.display = "none"
+        }
     }
+    // if the user clicks on remove, the item is removed from the Order List
     if(e.target.dataset.remove){
         const itemIndex = Number(e.target.dataset.remove)
         if (itemIndex > -1) {
             orderList.splice(itemIndex, 1)
             renderOrderList()
             calculateTotalPrice(orderList)
+
+        // hides the Order List if no items are left after clicking remove
+        if (orderList.length === 0) {
+            orderListContainer.style.display = "none"
+        } 
+
     }
 }
 })
@@ -30,37 +48,49 @@ function handleAddClick(itemId){
 
 
 // Get the modal
-const modal = document.getElementById("modal");
+const modal = document.getElementById("modal")
 
 // Get the button that opens the modal
-const btn = document.getElementById("completebtn");
+const btn = document.getElementById("completebtn")
 
 // Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName("close")[0]
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
-  modal.style.display = "block";
+    if(orderList)
+  modal.style.display = "block"
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+  modal.style.display = "none"
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    modal.style.display = "none"
   }
 }
 
 
+form.addEventListener('submit', function(e){
+    e.preventDefault()
+    orderList.splice(0, orderList.length)
+    modal.style.display = "none"
+    orderListContainer.style.display = "none"
+    paymentSuccessRender()
+})
 
 
-
-
-  
+function paymentSuccessRender(){
+    document.getElementById('item-list-container').innerHTML += `
+    <div class="success">
+    <p>Thanks, James! Your order is on its way!</p>
+    </div>
+    `
+}
 
 function getFeedHtml(){
     let feedHtml = ``
@@ -113,7 +143,7 @@ function calculateTotalPrice(orderList){
     return totalPrice
 }
 
-console.log(calculateTotalPrice(orderList))
+
 
 
 function render(){

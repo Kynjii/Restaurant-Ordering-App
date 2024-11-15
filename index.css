@@ -90,6 +90,13 @@ h2 {
 }
 
 
+#order-list-container {
+    display: none;
+}
+
+.success {
+    display: block;
+}
 
 
 /* The Modal (background) */

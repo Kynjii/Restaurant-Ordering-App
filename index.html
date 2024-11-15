@@ -47,11 +47,11 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <p>Enter card details</p>
-                    <form action="#" autocomplete="on" accept-charset="UTF-8">
+                    <form id="payment-form" action="#" autocomplete="on" accept-charset="UTF-8">
                         <input type="text" id="name" name="name" placeholder="Enter your name" required> 
                         <input type="number" id="cardnumber" name="cardnumber" placeholder="Enter card number" pattern="[0-9]" maxlength="16" required>
                         <input type="number" id="cvv" id="cvv" placeholder="Enter CVV" pattern="[0-9]" maxlength="3" required>
-                        <button id="payBtn" class="pay-btn">Pay</button>
+                        <button id="payBtn" type="submit" class="pay-btn">Pay</button>
                     </form>
                   </div>
             </div>
