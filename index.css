@@ -94,9 +94,17 @@ h2 {
     display: none;
 }
 
-.success {
-    display: block;
+#success {
+    display: none;
 }
+
+#rating {
+    display: none;
+}
+
+.checked {
+    color: orange;
+  }
 
 
 /* The Modal (background) */

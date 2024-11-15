@@ -1,7 +1,7 @@
 import menuArray from './data.js'
 const orderListContainer = document.getElementById('order-list-container')
+const successEl = document.getElementById('success')
 const form = document.getElementById('payment-form')
-const success = document.querySelector(".success")
 const orderList = []
 
 document.addEventListener('click', function(e){
@@ -10,12 +10,12 @@ document.addEventListener('click', function(e){
         handleAddClick(e.target.dataset.add)
         orderListContainer.style.display = "block"
 
-        // if the success message is present, hides it
-        if (success){
-            console.log("hide message")
-            success.style.display = "none"
+        // if the success message is present, hides it   
+        if (successEl){
+            successEl.style.display = "none"
         }
-    }
+    }     
+    
     // if the user clicks on remove, the item is removed from the Order List
     if(e.target.dataset.remove){
         const itemIndex = Number(e.target.dataset.remove)
@@ -80,17 +80,11 @@ form.addEventListener('submit', function(e){
     orderList.splice(0, orderList.length)
     modal.style.display = "none"
     orderListContainer.style.display = "none"
-    paymentSuccessRender()
+    successEl.style.display = "block"
 })
 
 
-function paymentSuccessRender(){
-    document.getElementById('item-list-container').innerHTML += `
-    <div class="success">
-    <p>Thanks, James! Your order is on its way!</p>
-    </div>
-    `
-}
+
 
 function getFeedHtml(){
     let feedHtml = ``
