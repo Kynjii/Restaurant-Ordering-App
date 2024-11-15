@@ -1,6 +1,5 @@
 import menuArray from './data.js'
 const orderList = []
-// const totalPrice = 0
 
 document.addEventListener('click', function(e){
     if(e.target.dataset.add){
