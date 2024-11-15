@@ -1,10 +1,19 @@
 import menuArray from './data.js'
 const orderList = []
+// const totalPrice = 0
 
 document.addEventListener('click', function(e){
     if(e.target.dataset.add){
         handleAddClick(e.target.dataset.add)
     }
+    if(e.target.dataset.remove){
+        const itemIndex = Number(e.target.dataset.remove)
+        if (itemIndex > -1) {
+            orderList.splice(itemIndex, 1)
+            renderOrderList()
+            calculateTotalPrice(orderList)
+    }
+}
 })
 
 function handleAddClick(itemId){
@@ -14,11 +23,42 @@ function handleAddClick(itemId){
 
     if(itemToAdd) {
         orderList.push(itemToAdd)
-        console.log(orderList)
         renderOrderList()
+        calculateTotalPrice(orderList)
     }
-    console.log(orderList)
 }
+
+
+
+// Get the modal
+const modal = document.getElementById("modal");
+
+// Get the button that opens the modal
+const btn = document.getElementById("completebtn");
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+
 
 
   
@@ -44,18 +84,37 @@ function getFeedHtml(){
 
 
 function renderOrderList() {
-    const orderContainer = document.getElementById('order-list')
+    const orderContainer = document.getElementById("order-list")
     let orderHtml = ``
-
-    orderList.forEach(function(orderItem) {
+    orderList.forEach(function(orderItem, index) {
         orderHtml += `
                 <div>
-                    ${orderItem.name} <span id=”remove-btn”>remove<span> ${orderItem.price}
-                </div>`
+                    ${orderItem.name} <span id="remove-btn" data-remove="${index}">remove<span> ${orderItem.price}
+                </div>
+                `
     })
 
     orderContainer.innerHTML = orderHtml
+
+    const orderPriceContainer = document.getElementById('total-price-container')
+    let totalPriceHtml = `
+                <div>
+                    <span class=”text-totalprice”>Total price:</span><span class="number-totalprice">$${calculateTotalPrice(orderList)}</span>
+                </div>
+                `
+
+    orderPriceContainer.innerHTML = totalPriceHtml
+    
 }
+
+function calculateTotalPrice(orderList){
+    const totalPrice = orderList.reduce(function(total, currentValue){
+        return total + currentValue.price
+    }, 0)
+    return totalPrice
+}
+
+console.log(calculateTotalPrice(orderList))
 
 
 function render(){
