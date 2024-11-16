@@ -120,8 +120,8 @@ function renderOrderList() {
     let orderHtml = ``
     orderList.forEach(function(orderItem, index) {
         orderHtml += `
-                <div>
-                    ${orderItem.name} <span id="remove-btn" data-remove="${index}">remove<span> ${orderItem.price}
+                <div class="order-item">
+                    <span class="item-name"><h2>${orderItem.name}</h2></span><span id="remove-btn" data-remove="${index}">remove</span><span id="price">$${orderItem.price}</span>
                 </div>
                 `
     })
@@ -130,9 +130,9 @@ function renderOrderList() {
 
     const orderPriceContainer = document.getElementById('total-price-container')
     let totalPriceHtml = `
-                <div>
-                    <span class=”text-totalprice”>Total price:</span><span class="number-totalprice">$${calculateTotalPrice(orderList)}</span>
-                    <div id="discount"><p>Meal Deal discount applied!</p></div>
+                <div class="total-price-container">
+                    <span class=”text-totalprice”><h2>Total price:</h2><span><span class="number-totalprice">$${calculateTotalPrice(orderList)}</span>
+                    <div id="discount">Meal Deal discount applied!</div>
                 </div>
                 `
 

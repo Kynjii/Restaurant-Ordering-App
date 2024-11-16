@@ -45,9 +45,14 @@ hr.solid {
     border-top: 1px solid #DEDEDE;
 }
 
+#solid-order {
+    margin-top: 100px !important;
+}
+
 
 /* Item NAME */
 h2 {
+    font-weight: 100;
     margin: 0;
 }
 
@@ -84,6 +89,22 @@ h2 {
     top: 10px;
 }
 
+
+
+/* TODO - Fix naming */
+#price {
+    font-weight: 100;
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    font-size: 20px;
+}
+
 .item-container i:hover {
     background-color: #DEDEDE;
     color: #fff;
@@ -91,11 +112,31 @@ h2 {
 
 
 #order-list-container {
+    margin-left: auto;
+    margin-right: auto;
     display: none;
+    width: 508px;
+    /* font-size: 32px; */
+    text-align: center;
 }
+
+/* .item-name {
+    border: 2px solid black;
+} */
 
 #success {
     display: none;
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ECFDF5;
+    color: #065F46;
+    width: 504px;
+    height: 120px;
+    border: 0;
+    line-height: 120px;
+    text-align: center;
+    font-size: 30px;
 }
 
 #discount {
@@ -104,11 +145,115 @@ h2 {
 
 #rating {
     display: none;
+    text-align: center;
+    margin-top: 40px;
 }
 
 .checked {
     color: orange;
   }
+
+
+.order-item {
+    position: relative;
+    display: flex;
+}
+
+#remove-btn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: 100;
+    line-height: 30px;
+    color: #BBBBBB;
+    margin-left: 6px;
+}
+
+#remove-btn:hover {
+    color: #16DB99;
+    text-shadow: 0px 0px 2px #BBBBBB;
+}
+
+
+.total-price-container {
+    position: relative;
+    text-align: left;
+}
+
+.number-totalprice {
+    font-weight: 100;
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    font-size: 20px;
+}
+
+#discount {
+    color: white;
+    background-color: green;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid darkgreen;
+    border-radius: 3px;
+    margin: 10px 0;
+    opacity: 0.55;
+}
+
+
+.complete-order-btn {
+    text-align: center;
+    width: 508px;
+    height: 60px;
+    background-color: #16DB99;
+    color: #fff;
+    border-radius: 3px;
+    border: 0;
+    margin-top: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.modal-content p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+input {
+    color: #757575;
+    width: 475px;
+    height: 70px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    margin: 12px 24px;
+    border-radius: 3px;
+    border: 1px solid #757575;
+}
+
+#payBtn {
+    text-align: center;
+    width: 475px;
+    height: 70px;
+    background-color: #16DB99;
+    color: #fff;
+    border-radius: 3px;
+    border: 0;
+    margin: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.complete-order-btn:hover {
+    box-shadow: 0px 0px 2px #16DB99;
+}
 
 
 /* The Modal (background) */
@@ -127,11 +272,13 @@ h2 {
   
   /* Modal Content/Box */
   .modal-content {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 524px; /* Could be more or less, depending on screen size */
   }
   
   /* The Close Button */

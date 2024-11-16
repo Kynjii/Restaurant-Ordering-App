@@ -33,11 +33,11 @@
                 <!-- Items to be added by js -->
             </section>
             <section id="order-list-container">
-                <h3>Your order</h3>                
+                <h2>Your order</h2>                
                  <div id="order-list">
                     <!-- order list to be added by js -->
                  </div>
-                <hr class=”solid order”>
+                <hr id=”solid-order”>
                 <div id="total-price-container">
                     <!-- total price to be added by js -->
                 </div>
@@ -48,9 +48,9 @@
                     <span class="close">&times;</span>
                     <p>Enter card details</p>
                     <form id="payment-form" action="#" autocomplete="on" accept-charset="UTF-8">
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required> 
-                        <input type="number" id="cardnumber" name="cardnumber" placeholder="Enter card number" pattern="[0-9]" maxlength="16" required>
-                        <input type="number" id="cvv" id="cvv" placeholder="Enter CVV" pattern="[0-9]" maxlength="3" required>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required><br>
+                        <input type="number" id="cardnumber" name="cardnumber" placeholder="Enter card number" pattern="[0-9]" maxlength="16" required><br>
+                        <input type="number" id="cvv" id="cvv" placeholder="Enter CVV" pattern="[0-9]" maxlength="3" required><br>
                         <button id="payBtn" type="submit" class="pay-btn">Pay</button>
                     </form>
                   </div>                 
@@ -59,6 +59,7 @@
                 <p>Thanks, James! Your order is on its way!</p>
               </div > 
             <div id="rating">
+              <p>Rate your experience!</p>
               <span class="fa fa-star"></span>
               <span class="fa fa-star"></span>
               <span class="fa fa-star"></span>
