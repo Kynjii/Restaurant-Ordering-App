@@ -22,7 +22,16 @@ document.addEventListener('click', function(e){
         if (successEl){
             successEl.style.display = "none"
         }
-    }     
+    } 
+
+    if(e.target.dataset.item){
+        handleAddClick(e.target.dataset.item)
+        orderListContainer.style.display = "block"
+        ratingEl.style.display = "none"
+    }
+
+
+
     
     // if the user clicks on remove, the item is removed from the Order List
     if(e.target.dataset.remove){
@@ -100,7 +109,7 @@ function getFeedHtml(){
 
     menuArray.forEach(function(item){
         feedHtml+=`
-        <div class="item-container">
+        <div class="item-container" data-item="${item.id}">
             <img src="${item.image}">
                 <div class="item-details">
                     <h2>${item.name}</h2>
