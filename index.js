@@ -8,34 +8,35 @@ const btn = document.getElementById("completebtn")
 const span = document.getElementsByClassName("close")[0]
 const orderList = []
 
-ratingEl.addEventListener('click', function(){
-    ratingEl.style.display = "none"
-    successEl.innerHTML = `
-    <p>Rating submitted!</p>`
-})
+// ADD / REMOVE CLICK FUNC //
 
 document.addEventListener('click', function(e){
-    // if the user clicks on add, the item is added to the Order List
+    // If the user clicks on add, the item is added to the Order List
     if(e.target.dataset.add){
         handleAddClick(e.target.dataset.add)
         orderListContainer.style.display = "block"
         ratingEl.style.display = "none"
 
-        // if the success message is present, hides it   
+        // If the success message is present, hides it   
         if (successEl){
             successEl.style.display = "none"
         }
     } 
 
-    // allows the user to click on the item to add it
+    // Allows the user to click on the item to add it instead of the "+" icon
     if(e.target.dataset.item){
         handleAddClick(e.target.dataset.item)
         orderListContainer.style.display = "block"
         ratingEl.style.display = "none"
+
+        // If the success message is present, hides it   
+        if (successEl){
+             successEl.style.display = "none"
+        }
     }
 
     
-    // if the user clicks on remove, the item is removed from the Order List
+    // If the user clicks on remove, the item is removed from the Order List
     if(e.target.dataset.remove){
         const itemIndex = Number(e.target.dataset.remove)
         if (itemIndex > -1) {
@@ -43,7 +44,7 @@ document.addEventListener('click', function(e){
             renderOrderList()
             calculateTotalPrice(orderList)
 
-        // hides the Order List if no items are left after clicking remove
+        // Hides the Order List if no items are left after clicking remove
         if (orderList.length === 0) {
             orderListContainer.style.display = "none"
         } 
@@ -52,6 +53,8 @@ document.addEventListener('click', function(e){
     }
 })
 
+
+// Handles the pushing of Items to the Order list
 function handleAddClick(itemId){
     const itemToAdd = menuArray.find(function(item){
         return item.id === Number(itemId)
@@ -64,7 +67,14 @@ function handleAddClick(itemId){
     }
 }
 
+// Shows a message after clicking on a star rating
+ratingEl.addEventListener('click', function(){
+    ratingEl.style.display = "none"
+    successEl.innerHTML = `
+    <p>Rating submitted!</p>`
+})
 
+// MODAL FUNC
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
     if(orderList)
@@ -84,6 +94,7 @@ window.onclick = function(event) {
 }
 
 
+// FORM FUNC
 form.addEventListener('submit', function(e){
     e.preventDefault()
     orderList.splice(0, orderList.length)
@@ -95,7 +106,7 @@ form.addEventListener('submit', function(e){
 
 
 
-
+// Handles rendering the Items on the feed
 function getFeedHtml(){
     let feedHtml = ``
 
@@ -116,6 +127,7 @@ function getFeedHtml(){
 }
 
 
+// Handles rendering the Order List
 function renderOrderList() {
     const orderContainer = document.getElementById("order-list")
     let orderHtml = ``
@@ -141,13 +153,15 @@ function renderOrderList() {
     
 }
 
+
+// Handles calculating the total price of the order
 function calculateTotalPrice(orderList) {
     // Calculate the total price of the items in the order
     let totalPrice = orderList.reduce(function (total, currentValue) {
         return total + currentValue.price
     }, 0)
 
-    // Check if all three items are present in the orderList
+    // Check if all three items are present in the orderList for the meal deal discount
     const itemNames = orderList.map(item => item.name) // Extract item names
     const mealDeal = itemNames.includes('Pizza') && itemNames.includes('Hamburger') && itemNames.includes('Beer')
 
@@ -163,9 +177,7 @@ function calculateTotalPrice(orderList) {
 }
 
 
-
-
-
+// Renders the page
 function render(){
     document.getElementById('item-list-container').innerHTML = getFeedHtml()
 }
