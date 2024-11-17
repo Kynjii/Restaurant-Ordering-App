@@ -3,6 +3,9 @@ const orderListContainer = document.getElementById('order-list-container')
 const successEl = document.getElementById('success')
 const ratingEl = document.getElementById('rating')
 const form = document.getElementById('payment-form')
+const modal = document.getElementById("modal")
+const btn = document.getElementById("completebtn")
+const span = document.getElementsByClassName("close")[0]
 const orderList = []
 
 ratingEl.addEventListener('click', function(){
@@ -24,13 +27,12 @@ document.addEventListener('click', function(e){
         }
     } 
 
+    // allows the user to click on the item to add it
     if(e.target.dataset.item){
         handleAddClick(e.target.dataset.item)
         orderListContainer.style.display = "block"
         ratingEl.style.display = "none"
     }
-
-
 
     
     // if the user clicks on remove, the item is removed from the Order List
@@ -62,16 +64,6 @@ function handleAddClick(itemId){
     }
 }
 
-
-
-// Get the modal
-const modal = document.getElementById("modal")
-
-// Get the button that opens the modal
-const btn = document.getElementById("completebtn")
-
-// Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close")[0]
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -130,7 +122,7 @@ function renderOrderList() {
     orderList.forEach(function(orderItem, index) {
         orderHtml += `
                 <div class="order-item">
-                    <span class="item-name"><h2>${orderItem.name}</h2></span><span id="remove-btn" data-remove="${index}">remove</span><span id="price">$${orderItem.price}</span>
+                    <span class="item-name"><h2>${orderItem.name}</h2></span><span id="remove-btn" data-remove="${index}">remove</span><span id="order-item-price">$${orderItem.price}</span>
                 </div>
                 `
     })

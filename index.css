@@ -12,26 +12,36 @@ header {
     color: #fff;
 }
 
-.header {
-    display: inline-block;    
-    margin-left: 46px;
+ .header {
+      display: inline-block;    
+      margin-left: 46px;
+  }
+
+ .header h1 {
+      line-height: 24px;
+      margin-top: 46px;    
+  }
+
+ .header p {
+      margin-top: 19px;
+  }
+
+
+/* DIVIDERS */
+hr.solid {
+    width: 504px;
+    border-top: 1px solid #DEDEDE;
 }
 
-.header h1 {
-    line-height: 24px;
-    margin-top: 46px;    
-}
-
-.header p {
-    margin-top: 19px;
-}
-
+ #solid-order {
+     margin-top: 100px !important;
+  }
 
 
 /* ITEMS LIST CONTAINER */
 .item-container {
     display: flex;
-    position: relative;
+    position: relative; /* so the '.item-container i' can be positioned to the right */
     margin-left: auto;
     margin-right: auto;    
     margin-top: 47px;
@@ -39,48 +49,39 @@ header {
     height: 100px;
 }
 
-.item-container:active {
+ .item-container:active {
     background-color: #DEDEDE;
     color: #fff;
-}
+  }
 
-/* Divider */
-hr.solid {
-    width: 504px;
-    border-top: 1px solid #DEDEDE;
-}
 
-#solid-order {
-    margin-top: 100px !important;
+ /* Item List Elements */
+ h2 {
+     font-weight: 100;
+     margin: 0;
 }
 
 
-/* Item NAME */
-h2 {
-    font-weight: 100;
-    margin: 0;
-}
+ .ingredients {
+     color: #595959;
+     margin-top: 0;
+     margin-bottom: 5px;
+ }
 
-/* Item INGREDIENTS */
-.ingredients {
-    color: #595959;
-    margin-top: 0;
-    margin-bottom: 5px;
-}
 
-.price {
-    margin: 0;
-    font-size: 20px;
-}
+ .price {
+     margin: 0;
+     font-size: 20px;
+ }
 
-/* ITEMS - Img */
-.item-container img {
-    height: 70px;
-    margin-right: 30px;
-}
 
-/* ITEMS - ADD ICON */
-.item-container i {
+ .item-container img {
+     height: 70px;
+     margin-right: 30px;
+ }
+
+
+ .item-container i { /* the '+' icon for the item */
     background-color: #fff;
     border: 1.5px solid #DEDEDE;
     border-radius: 100%;
@@ -92,42 +93,111 @@ h2 {
     position: absolute;
     right: 0px;
     top: 10px;
-}
+ }
 
-.item-container i:hover {
+ .item-container i:hover {
     background-color: #DEDEDE;
     color: #fff;
+ }
+
+
+/* ORDERED LIST CONTAINER */
+    #order-list-container {
+        margin-left: auto;
+        margin-right: auto;
+        display: none;
+        width: 508px;
+        text-align: center;
+} 
+ /* Ordered Item Elements */
+ .order-item {
+        position: relative; /* so the '#order-item-price' can be positioned to the right */
+        display: flex;
+ }
+
+ #order-item-price {
+        font-weight: 100;
+        display: flex;
+        justify-content: baseline;
+        align-items: baseline;
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 0px;
+        top: 10px;
+        font-size: 20px;
+ }
+
+ #remove-btn {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+        font-weight: 100;
+        line-height: 30px;
+        padding: 0 10px;
+        border-radius: 5px;
+        color: #595959;
+        margin-left: 6px;
+ }
+
+ #remove-btn:hover {
+        color: #16DB99;
+        text-shadow: 0px 0px 2px #BBBBBB;
+ }
+
+
+/* TOTAL PRICE CONTAINER */
+.total-price-container {
+        position: relative;
+        text-align: left;
 }
 
+ .number-totalprice {
+        font-weight: 100;
+        display: flex;
+        justify-content: baseline;
+        align-items: baseline;
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 0px;
+        top: 10px;
+        font-size: 20px;
+ }
+
+ #discount {
+        display: none; /* default state */
+        color: white;
+        background-color: rgba(128, 128, 128, 0.623);
+        width: 150px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 3px;
+        margin: 10px 0;
+        opacity: 0.55;
+ }
+
+ .complete-order-btn {
+        width: 508px;
+        height: 60px;
+        background-color: #16DB99;
+        color: #fff;
+        border-radius: 3px;
+        border: 0;
+        margin-top: 50px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+ }
+
+ .complete-order-btn:hover {
+        box-shadow: 0px 0px 2px #16DB99;
+ }
 
 
-/* TODO - Fix naming */
-#price {
-    font-weight: 100;
-    display: flex;
-    justify-content: baseline;
-    align-items: baseline;
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    right: 0px;
-    top: 10px;
-    font-size: 20px;
-}
-
-
-
-
-#order-list-container {
-    margin-left: auto;
-    margin-right: auto;
-    display: none;
-    width: 508px;
-    text-align: center;
-}
-
+ /* PAYMENT/ORDER COMPLETE ELEMENT */
 #success {
-    display: none;
+    display: none; /* default state */
     margin-top: 45px;
     margin-left: auto;
     margin-right: auto;
@@ -141,151 +211,56 @@ h2 {
     font-size: 30px;
 }
 
-#discount {
-    display: none;
-}
 
+/* RATING ELEMENT */
 #rating {
-    display: none;
+    display: none; /* default state */
     text-align: center;
     margin-top: 40px;
     font-size: 40px;
-}
+ }
 
 .checked {
     color: orange;
   }
 
-
-.order-item {
-    position: relative;
-    display: flex;
-}
-
-#remove-btn {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 10px;
-    font-weight: 100;
-    line-height: 30px;
-    padding: 0 10px;
-    border-radius: 5px;
-    color: #595959;
-    margin-left: 6px;
-}
-
-#remove-btn:hover {
-    color: #16DB99;
-    text-shadow: 0px 0px 2px #BBBBBB;
-}
+ .fa-star:hover {
+   color: orange;
+   text-shadow: 0px 0px 3px orangered;
+  }
 
 
-.total-price-container {
-    position: relative;
-    text-align: left;
-}
-
-.number-totalprice {
-    font-weight: 100;
-    display: flex;
-    justify-content: baseline;
-    align-items: baseline;
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    right: 0px;
-    top: 10px;
-    font-size: 20px;
-}
-
-#discount {
-    color: white;
-    background-color: rgba(128, 128, 128, 0.623);
-    width: 150px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 3px;
-    margin: 10px 0;
-    opacity: 0.55;
-}
-
-
-.complete-order-btn {
-    text-align: center;
-    width: 508px;
-    height: 60px;
-    background-color: #16DB99;
-    color: #fff;
-    border-radius: 3px;
-    border: 0;
-    margin-top: 50px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.modal-content p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    font-size: 24px;
-}
-
-input {
-    color: #757575;
-    width: 475px;
-    height: 70px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
-    margin: 12px 24px;
-    border-radius: 3px;
-    border: 1px solid #757575;
-}
-
-#payBtn {
-    text-align: center;
-    width: 475px;
-    height: 70px;
-    background-color: #16DB99;
-    color: #fff;
-    border-radius: 3px;
-    border: 0;
-    margin: 20px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.complete-order-btn:hover {
-    box-shadow: 0px 0px 2px #16DB99;
-}
-
-
-/* The Modal (background) */
+  /* MODAL (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none; /* default state */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: fixed; 
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    height: 100%; 
+    width: 100%;
+    overflow: auto; /* adds scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
-  /* Modal Content/Box */
+  /* Modal Content */
   .modal-content {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 524px; /* Could be more or less, depending on screen size */
+    width: 524px; 
+  }
+
+  .modal-content p { /* Modal title */  
+    font-weight: bold;
+    font-size: 24px;
   }
   
-  /* The Close Button */
+  /* Modal close button */
   .close {
     color: #aaa;
     float: right;
@@ -300,8 +275,25 @@ input {
     cursor: pointer;
   }
 
+ input {
+    color: #757575;
+    width: 475px;
+    height: 70px;
+    font-family: inherit;
+    font-size: 20px;
+    margin: 12px 24px;
+    border-radius: 3px;
+    border: 1px solid #757575;
+  }
 
-  .fa-star:hover {
-    color: orange;
-    text-shadow: 0px 0px 3px orangered;
+ #payBtn {
+    width: 475px;
+    height: 70px;
+    background-color: #16DB99;
+    color: #fff;
+    border-radius: 3px;
+    border: 0;
+    margin: 20px;
+    font-weight: bold;
+    font-size: 20px;
   }
